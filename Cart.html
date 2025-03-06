@@ -22,116 +22,43 @@
 	<div id="mobile">
         <a href="cart.html"><i class='bx bx-shopping-bag'></i></a>
 		<i id="bar" class='bx bx-menu'></i>  
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-.cart-container {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 400px;
-}
-
-.cart-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 0;
-    border-bottom: 1px solid #ddd;
-}
-
-.cart-item img {
-    width: 50px;
-    height: 50px;
-    border-radius: 5px;
-}
-
-.item-details {
-    flex-grow: 1;
-    margin-left: 10px;
-}
-
-.quantity-controls {
-    display: flex;
-    align-items: center;
-}
-
-button {
-    cursor: pointer;
-    border: none;
-    padding: 5px 10px;
-    margin: 0 5px;
-    background-color: #28a745;
-    color: white;
-    border-radius: 5px;
-}
-
-button.remove-item {
-    background-color: #dc3545;
-}
-
-.cart-summary {
-    margin-top: 20px;
-    text-align: center;
-}
-
-.checkout {
-    background-color: #007bff;
-    padding: 10px;
-    width: 100%;
-}
-
-/* script.js */
-document.addEventListener("DOMContentLoaded", function() {
-    const cartItems = document.querySelectorAll(".cart-item");
-    const totalPriceElement = document.getElementById("total-price");
-    
-    function updateTotal() {
-        let total = 0;
-        cartItems.forEach(item => {
-            const price = parseFloat(item.querySelector(".price").textContent.replace("$", ""));
-            const quantity = parseInt(item.querySelector(".quantity").textContent);
-            total += price * quantity;
-        });
-        totalPriceElement.textContent = `$${total.toFixed(2)}`;
-    }
-    
-    cartItems.forEach(item => {
-        const decreaseButton = item.querySelector(".decrease");
-        const increaseButton = item.querySelector(".increase");
-        const quantityElement = item.querySelector(".quantity");
-        const removeButton = item.querySelector(".remove-item");
-        
-        decreaseButton.addEventListener("click", () => {
-            let quantity = parseInt(quantityElement.textContent);
-            if (quantity > 1) {
-                quantityElement.textContent = quantity - 1;
-                updateTotal();
-            }
-        });
-        
-        increaseButton.addEventListener("click", () => {
-            let quantity = parseInt(quantityElement.textContent);
-            quantityElement.textContent = quantity + 1;
-            updateTotal();
-        });
-        
-        removeButton.addEventListener("click", () => {
-            item.remove();
-            updateTotal();
-        });
-    });
-    
-    updateTotal();
-});
+    <div class="cart-container">
+        <h2>Shopping Cart</h2>
+        <div class="cart-items">
+            <div class="cart-item">
+                <img src="product1.jpg" alt="Product 1" width="50">
+                <div class="item-details">
+                    <h3>Product 1</h3>
+                    <p class="price">$20.00</p>
+                    <div class="quantity-controls">
+                        <button class="decrease">-</button>
+                        <span class="quantity">1</span>
+                        <button class="increase">+</button>
+                    </div>
+                </div>
+                <button class="remove-item">Remove</button>
+            </div>
+            <div class="cart-item">
+                <img src="product2.jpg" alt="Product 2" width="50">
+                <div class="item-details">
+                    <h3>Product 2</h3>
+                    <p class="price">$15.00</p>
+                    <div class="quantity-controls">
+                        <button class="decrease">-</button>
+                        <span class="quantity">1</span>
+                        <button class="increase">+</button>
+                    </div>
+                </div>
+                <button class="remove-item">Remove</button>
+            </div>
+        </div>
+        <div class="cart-summary">
+            <h3>Total: <span id="total-price">$35.00</span></h3>
+            <button class="checkout">Proceed to Checkout</button>
+        </div>
+    </div>
+</body>
+</html>
  <script src="js.js"></script>
     
 </body>
